@@ -1,6 +1,6 @@
 
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { updateStudent } from "../features/students/studentSlice";
 import { updateTeacherData } from "../features/teachers/teacherSlice";
 

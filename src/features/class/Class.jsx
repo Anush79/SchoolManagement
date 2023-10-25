@@ -9,8 +9,6 @@ export default function Class() {
     gender: "",
     category: "",
   });
-  const [displayData, setDisplayData] = useState(students);
-
   const classCategorised = filter.grade
     ? students?.filter((item) => item.grade === filter.grade)
     : students;
