@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import {toast} from 'react-hot-toast'
 import axios from 'axios';
 
 
 export const fetchStudents= createAsyncThunk('students/fetchStudents', async()=>{
   const response = await axios.get ( 'https://studentmanagement.anushkajaiswal7.repl.co/student');
- 
   return response?.data?.data
 })
 
@@ -14,11 +13,13 @@ export const addStudentData = createAsyncThunk('students/addStudentData', async(
   const response = await axios.post('https://studentmanagement.anushkajaiswal7.repl.co/student',
   studentData
   )
+  toast.success(response?.data?.message ?? "Success")
   return response.data.data
 })
 
 export const deleteStudentData = createAsyncThunk('students/deleteStudentData', async(studentId)=>{
    const response= await axios.delete(`https://studentmanagement.anushkajaiswal7.repl.co/student/${studentId}`);
+   toast.success(response?.data?.message ?? "Success")
    return response.data.data;
 })
 export const updateStudent = createAsyncThunk('students/updateStudent',async( payload)=>{
@@ -26,6 +27,7 @@ export const updateStudent = createAsyncThunk('students/updateStudent',async( pa
   const response = await axios.post(`https://studentmanagement.anushkajaiswal7.repl.co/student/${id}`,
   formData
   )
+  toast.success(response?.data?.message ?? "Success")
   return response.data.data
 })
 export const studentSlice = createSlice({

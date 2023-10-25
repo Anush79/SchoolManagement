@@ -23,30 +23,35 @@ export default function UpdateForm({type, data, onClose}){
 
 
   if(type === "student"){
-    return     <form onSubmit={onSubmitHandler}>
+    return    <form onSubmit={onSubmitHandler}>
+    <label htmlFor="name">Name:</label>
     <input
       type="text"
-      placeholder="name"
+      id="name"
+      placeholder="Name"
       name="name"
       required
       onChange={onChangeHandler}
       value={formData.name}
     />
+  
+    <label htmlFor="age">Age:</label>
     <input
       type="number"
-      name="age"
       id="age"
+      name="age"
       min={3}
       max={20}
-      placeholder="age"
+      placeholder="Age"
       required
       onChange={onChangeHandler}
       value={formData.age}
     />
-
+  
+    <label htmlFor="gender">Gender:</label>
     <select
-      name="gender"
       id="gender"
+      name="gender"
       required
       onChange={onChangeHandler}
       value={formData.gender}
@@ -54,87 +59,100 @@ export default function UpdateForm({type, data, onClose}){
       <option value="">Select Gender</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
-      <option value="Not mention">Not mention</option>
+      <option value="Not mention">Not Mention</option>
     </select>
-
+  
+    <label htmlFor="grade">Grade/Class:</label>
     <input
       type="number"
-      placeholder="grade/class"
+      id="grade"
+      placeholder="Grade/Class"
       name="grade"
-      id=""
       min={1}
       max={12}
       required
       onChange={onChangeHandler}
       value={formData.grade}
     />
+  
+    <label htmlFor="attendance">Attendance:</label>
     <input
       type="number"
-      placeholder="attendance"
+      id="attendance"
+      placeholder="Attendance"
       name="attendance"
-      id=""
       min={0}
       max={300}
       required
       onChange={onChangeHandler}
       value={formData.attendance}
     />
+  
+    <label htmlFor="marks">Marks:</label>
     <input
       type="number"
-      placeholder="marks"
+      id="marks"
+      placeholder="Marks"
       name="marks"
-      id=""
       min={0}
       max={500}
       required
       onChange={onChangeHandler}
       value={formData.marks}
     />
+  
     <button>Update Student</button>
   </form>
+  
   }
   else return <>
-   <form onSubmit={onSubmitHandler}>
-        <input
-          type="text"
-          placeholder="name"
-          name="name"
-          required
-          value={formData.name}
-          onChange={onChangeHandler}
-        />
-        <input
-          type="number"
-          name="contact"
-          id="contact"
-          min={6000000000}
-          max={9999999999}
-          placeholder="Contact Number"
-          required
-          value={formData.contact}
-          onChange={onChangeHandler}
-        />
+  <form onSubmit={onSubmitHandler}>
+  <label htmlFor="name">Name</label>
+  <input
+    type="text"
+    id="name"
+    placeholder="Name"
+    name="name"
+    required
+    value={formData.name}
+    onChange={onChangeHandler}
+  />
 
-        <select
-          name="subject"
-          id="subject"
-          required
-          value={formData.subject}
-          onChange={onChangeHandler}
-        >
-          <option value="">Select subject</option>
-          <option value="English">English</option>
-          <option value="Hindi">Hindi</option>
-          <option value="Mathematics">Mathematics</option>
-          <option value="Social Science">Social Science</option>
-          <option value="Science">Science</option>
-          <option value="Computer">Computer</option>
-          <option value="Physical Education">Physical Education</option>
-          <option value="Sanskrit">Sanskrit</option>
-        </select>
+  <label htmlFor="contact">Contact</label>
+  <input
+    type="number"
+    id="contact"
+    name="contact"
+    min={6000000000}
+    max={9999999999}
+    placeholder="Contact Number"
+    required
+    value={formData.contact}
+    onChange={onChangeHandler}
+  />
 
-        <button>Update Teacher</button>
-      </form>
+  <label htmlFor="subject">Subject</label>
+  <select
+    id="subject"
+    name="subject"
+    required
+    value={formData.subject}
+    onChange={onChangeHandler}
+  >
+    <option value="">Select subject</option>
+    <option value="English">English</option>
+    <option value="Hindi">Hindi</option>
+    <option value="Mathematics">Mathematics</option>
+    <option value="Social Science">Social Science</option>
+    <option value="Science">Science</option>
+    <option value="Computer">Computer</option>
+    <option value="Physical Education">Physical Education</option>
+    <option value="Sanskrit">Sanskrit</option>
+  </select>
+
+  <button>Update Teacher</button>
+</form>
+
   </>
 
 }

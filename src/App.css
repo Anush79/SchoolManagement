@@ -8,9 +8,10 @@
 
 .logo {
   font-weight: 800;
-  text-shadow: 10px -5px 10px #111;
+  text-shadow: 10px 5px 10px #111;
   border-left: solid;
   border-bottom: solid;
+  padding: 0.6rem;
 }
 
 .logo:hover {
@@ -113,8 +114,15 @@ select {
   border: 2px solid;
   background: #ddd;
   border-radius: 5px;
+  margin:3px;
 }
+.formToUpdate form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
+}
 button:hover {
   transform: scale(0.95);
   cursor: pointer;
@@ -149,9 +157,4 @@ button {
   to {
     transform: rotate(360deg);
   }
-}
-
-.chart {
-  width: 100vh;
-  margin: auto;
 }

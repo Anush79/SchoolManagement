@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import {toast} from 'react-hot-toast'
 import axios from 'axios';
 
 
 export const fetchTeachers= createAsyncThunk('teachers/fetchTeachers', async()=>{
   const response = await axios.get ( 'https://studentmanagement.anushkajaiswal7.repl.co/teachers');
-  console.log(response?.data?.data)
   return response?.data?.data
 })
 
@@ -13,11 +12,13 @@ export const addteacherData = createAsyncThunk('teachers/addteacherData', async(
   const response = await axios.post('https://studentmanagement.anushkajaiswal7.repl.co/teachers',
   teacherData
   )
+  toast.success(response?.data?.message ?? "Success")
   return response.data.data
 })
 
 export const deleteteacherData = createAsyncThunk('teachers/deleteteacherData', async(teacherId)=>{
    const response= await axios.delete(`https://studentmanagement.anushkajaiswal7.repl.co/teachers/${teacherId}`);
+   toast.success(response?.data?.message ?? "Success")
    return response.data.data;
 })
 export const updateTeacherData = createAsyncThunk('teachers/updateTeacherData', async(payload)=>{
@@ -25,6 +26,7 @@ export const updateTeacherData = createAsyncThunk('teachers/updateTeacherData', 
   const response = await axios.put(`https://studentmanagement.anushkajaiswal7.repl.co/teachers/${id}`,
   teacherData
   )
+  toast.success(response?.data?.message ?? "Success")
   return response.data.data
 })
 export const teacherSlice = createSlice({
@@ -41,6 +43,7 @@ export const teacherSlice = createSlice({
     [fetchTeachers.fulfilled]:(state, action)=>{
       state.teachers = action.payload;
       state.status = "success";
+      state.error = null;
     },
     [fetchTeachers.rejected]:(state, action)=>{
       state.error = action.payload;
@@ -51,6 +54,7 @@ export const teacherSlice = createSlice({
     [addteacherData.fulfilled]:(state, action)=>{
       state.teachers = [action.payload, ...state.teachers];
       state.status = "success";
+      state.error = null;
     },
     [addteacherData.rejected]:(state, action)=>{
       state.error = action.payload;
@@ -61,6 +65,7 @@ export const teacherSlice = createSlice({
     [deleteteacherData.fulfilled]:(state, action)=>{
       state.teachers = action.payload;
       state.status = "success";
+      state.error = null;
     },
     [deleteteacherData.rejected]:(state, action)=>{
       state.error = action.payload;
@@ -71,6 +76,7 @@ export const teacherSlice = createSlice({
     [updateTeacherData.fulfilled]:(state, action)=>{
       state.teachers = action.payload;
       state.status = "success";
+      state.error = null;
     },
     [updateTeacherData.rejected]:(state, action)=>{
       state.error = action.payload;

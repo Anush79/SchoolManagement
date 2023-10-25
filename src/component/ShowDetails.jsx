@@ -56,7 +56,9 @@ export default function ShowDetails() {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <UpdateForm type={type} data={data} onClose={handleClose} />
+        <div className="formToUpdate">
+          <UpdateForm type={type} data={data} onClose={handleClose} />
+        </div>
       </Box>
     </Modal>
   </div>
